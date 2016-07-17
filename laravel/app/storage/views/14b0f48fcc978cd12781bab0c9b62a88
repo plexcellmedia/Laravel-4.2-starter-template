@@ -1,0 +1,69 @@
+<?php $__env->startSection('content'); ?>
+	<p>HUOM: Novellit näkyvät listassa vasta noin 10 minuutin päästä julkaisemisesta!</p>
+	<table class="ui celled striped table">
+		<thead>
+			<tr>
+				<th colspan="6">
+					Julkaisemani seksinovellit
+				</th>
+			</tr>
+			<tr>
+				<th>#</th>
+				<th>Nimi</th>
+				<th>Kategoria</th>
+				<th>Tila</th>
+				<th>Näyttökerrat</th>
+				<th>Tähdet</th>
+			</tr>
+		</thead>
+		<tbody>
+			<?php if(count($posts) > 0): ?>
+				<?php $c = 1; ?>
+				<?php foreach($posts as $post): ?>
+					<tr>
+						<td class="collapsing">
+							<?php echo $c; ?>
+
+						</td>
+						<td>
+							<?php if($post->published == 0): ?>
+								<?php echo e($post->title); ?>
+
+							<?php else: ?>
+								<a href="<?php echo url('/' . $post->category_link . '/' . $post->post_link . '/'); ?>"><?php echo e($post->title); ?></a>
+							<?php endif; ?>
+						</td>
+						<td class="right aligned collapsing">
+							<a href="<?php echo url('/' . $post->category_link . '/'); ?>"><?php echo e($post->category); ?></a>
+						</td>
+						<td>
+							<?php if($post->published == 0): ?>
+								Odotaa julkaisua
+							<?php else: ?>
+								Julkaistu
+							<?php endif; ?>
+						</td>
+						<td class="right aligned collapsing">
+							<?php echo number_format($post->views); ?>
+
+						</td>
+						<td class="right aligned collapsing">
+							<div class="ui star rating post-rating" data-max-rating="5" data-rating="<?php echo round($post->rating); ?>"></div>
+						</td>
+					</tr>
+					<?php $c++; ?>
+				<?php endforeach; ?>
+			<?php else: ?>
+				<tr>
+					<td colspan="6">Et ole julkaissut yhtäkään novellia, voit tehdä sen <a href="<?php echo url('/julkaise'); ?>">täällä.</td>
+				</tr>
+			<?php endif; ?>
+		</tbody>
+	</table>
+
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('scripts'); ?>
+
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.members', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

@@ -1,0 +1,40 @@
+<?php $__env->startSection('content'); ?>
+
+	<?php if(Session::has('message')): ?>
+		<?php echo Session::get('message'); ?>
+
+	<?php endif; ?>
+	
+	<?php if(Session::has('error')): ?>
+		<?php echo Session::get('error'); ?>
+
+	<?php endif; ?>
+
+	<?php if($errors->has()): ?>
+		<ul>
+			<?php foreach($errors->all() as $error): ?>
+				<li><?php echo $error; ?></li>
+			<?php endforeach; ?>
+		</ul>
+	<?php endif; ?>
+
+	<?php echo Form::open(array('method' => 'POST', 'url' => url('/forgot'))); ?>
+
+
+		<label>Email</label>
+		<?php echo Form::text('email', Input::old('email', '')); ?>
+
+		<?php echo Form::captcha(); ?>
+
+		<?php echo Form::submit('Recover account'); ?>
+
+
+	<?php echo Form::close(); ?>
+
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('scripts'); ?>
+	<?php echo Captcha::script(); ?>
+
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.general', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

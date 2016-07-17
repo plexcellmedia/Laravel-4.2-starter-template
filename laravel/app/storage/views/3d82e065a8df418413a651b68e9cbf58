@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="en-US">
+	<head>
+		<meta charset="utf-8">
+	</head>
+	<body>
+		<div>
+			Visit link below to reset your password.
+			<a href="<?php echo $reset_url; ?>"><?php echo $reset_url; ?></a>
+		</div>
+	</body>
+</html>

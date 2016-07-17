@@ -1,0 +1,8 @@
+<?php $__env->startSection('content'); ?>
+	<?php if(isset($error) && $error == true): ?>
+		<p><?php echo $error_message; ?></p>
+	<?php elseif(isset($success) && $success == true): ?>
+		<p>Account activated! Login <a href="<?php echo url('/login'); ?>">here.</a></p>
+	<?php endif; ?>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.general', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
