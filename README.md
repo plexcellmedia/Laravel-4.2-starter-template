@@ -45,7 +45,7 @@ root/app/config/mail.php
 * Run
 ```
 composer update
-php artisan migration
+php artisan migrate
 php artisan db:seed
 ```
 * Enter your no-reply email address and name at 
