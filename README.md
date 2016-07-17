@@ -58,6 +58,14 @@ root/.env.php
 ```
 * Done!
 
+If you used db:seed, you can login to members page with  
+Username: user@laravel.com  
+Password: password
+
+Admin  
+Username: admin@laravel.com  
+Password: password
+
 ## Thanks
 https://github.com/ollieread/multiauth  
 https://github.com/ARCANEDEV/noCAPTCHA
