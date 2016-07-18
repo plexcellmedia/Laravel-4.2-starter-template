@@ -218,7 +218,7 @@ class AuthController extends BaseController {
 				$email   = Input::get('email');
 				$results = DB::table('users')->where('email', '=', $email);
 				if($results->count() <= 0){
-					return Redirect::to(URL::to('/forgot'))->with('error', 'Sähköpostiosoitteella ei löytynyt yhtäkään tunnusta.');
+					return Redirect::to(URL::to('/forgot'))->with('error', 'Could not find account with that email address.');
 				}else{
 					$user = $results->first();
 					$key = str_random(64);
